@@ -133,6 +133,17 @@ CELERY_TASK_SERIALIZER='json'
 CELERY_TIMEZONE='Asia/Kolkata'
 
 CELERY_RESULT_BACKEND='django-db'
+CELERY_RESULT_EXTENDED=True
 
 # celery beat
 CELERY_BEAT_SCHEDULER='django_celery_beat.schedulers:DatabaseScheduler'
+
+# SMTP CONFIGURATION
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sjha123321@gmail.com'
+EMAIL_HOST_PASSWORD = 'skwurejunoksysel'
+
+

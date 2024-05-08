@@ -3,6 +3,7 @@ import os
 
 from celery import Celery
 from django.conf import settings
+from celery.schedules import crontab
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','celery_practice.settings')
 app=Celery('celery_practice')
@@ -13,7 +14,12 @@ app.config_from_object(settings,namespace='CELERY')
 
 # CELERY BEAT SETTINGS
 
-app.conf.beat_schedule={}
+app.conf.beat_schedule={
+    'send_mail_everyday_at_8':{
+        'task':'main.tasks.send_email',
+        'schedule':crontab(hour=22,minute=45),
+    }
+}
 # load task modules from all registered Django apps.,it will go to each app and check is there any task
 app.autodiscover_tasks()
 #below written code is not mandot
