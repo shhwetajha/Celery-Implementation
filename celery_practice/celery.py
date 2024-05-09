@@ -17,7 +17,7 @@ app.config_from_object(settings,namespace='CELERY')
 app.conf.beat_schedule={
     'send_mail_everyday_at_8':{
         'task':'main.tasks.send_email',
-        'schedule':crontab(hour=22,minute=45),
+        'schedule':crontab(hour=15,minute=55),
     }
 }
 # load task modules from all registered Django apps.,it will go to each app and check is there any task
